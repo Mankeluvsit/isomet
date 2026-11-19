@@ -1,7 +1,7 @@
 # ROADMAP
 
 ## Phase 1: Core Engine & Terrain
-- [ ] #1 Engine & Terrain (WebGPU/WebGL2, isometric camera, fog, heightmap, instanced props)
+- [x] #1 Engine & Terrain (WebGPU/WebGL2, isometric camera, fog, heightmap, instanced props)
 
 ## Phase 2: Survival/Food/Gathering
 - [ ] #2 Player Archetypes & Controls

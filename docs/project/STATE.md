@@ -4,7 +4,7 @@
 v0.1.0 - Mobile-First Playable Vertical Slice
 
 ## Active Branch/Issue
-none (setup complete)
+none (Issue #1 complete)
 
 ## Last Verified Build Commit SHA
 15141e885853a868f7878beaa9254a6cb2b8dd14
@@ -18,4 +18,4 @@ none (setup complete)
 - OpenCode MCP servers configured in opencode.json
 
 ## Immediate Next Action
-Begin executing Issue #1 (Engine & Terrain) on branch feat/1-engine-terrain.
+Begin executing Issue #2 (Player Archetypes & Controls).
