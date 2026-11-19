@@ -1,0 +1,16 @@
+node_modules/
+dist/
+.playwright-mcp/
+*.log
+tsconfig.tsbuildinfo
+.env
+.DS_Store
+
+# compiled output
+src/**/*.js
+
+# reference images
+*.jpg
+*.png
+*.jpeg
+*.webp

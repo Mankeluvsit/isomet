@@ -1,0 +1,68 @@
+:root {
+  --bg: #0b0e14;
+  --panel: rgba(15,12,10,0.88);
+  --border: #3a3f4b;
+  --text: #e6e6e6;
+  --accent: #d4a24c;
+  --hp: #c43c3c;
+  --stamina: #f7c94c;
+  --mana: #5c8fff;
+  --green: #4caf50;
+  --red: #f44336;
+}
+* { box-sizing: border-box; }
+html, body { margin:0; padding:0; overflow:hidden; background:#000; font-family: 'Segoe UI', system-ui, sans-serif; color: var(--text); }
+#app { position:fixed; inset:0; }
+#renderCanvas { width:100%; height:100%; display:block; touch-action:none; }
+#hud-root { position:fixed; inset:0; pointer-events:none; z-index:5; }
+#hud-root .interactive { pointer-events:auto; }
+#title-overlay { position:fixed; inset:0; z-index:20; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.7); pointer-events:auto; }
+.title-card { background:var(--panel); border:2px solid var(--accent); border-radius:12px; padding:24px; max-width:480px; text-align:center; }
+.title-card h1 { color:var(--accent); margin:0 0 8px; letter-spacing:2px; }
+.archetype-btn { display:block; width:100%; margin:8px 0; padding:12px; background:#1a1f2b; color:var(--text); border:1px solid var(--border); border-radius:8px; cursor:pointer; font-size:15px; }
+.archetype-btn:hover { border-color:var(--accent); }
+/* Desktop HUD */
+.desk-hud { position:fixed; bottom:12px; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:6px; pointer-events:auto; }
+.orb { width:72px; height:72px; border-radius:50%; border:3px solid #555; position:relative; overflow:hidden; }
+.orb .fill { position:absolute; bottom:0; left:0; right:0; transition:height .1s; }
+.orb.hp .fill { background:linear-gradient(#e53935,#b71c1c); }
+.orb.mana .fill { background:linear-gradient(#7e57c2,#4a148c); }
+.hotbar { display:flex; gap:6px; }
+.hotbar .slot { width:48px; height:48px; background:var(--panel); border:1px solid var(--border); border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:11px; cursor:pointer; position:relative; }
+.hotbar .slot .cd { position:absolute; inset:0; background:rgba(0,0,0,0.6); }
+.stamina-bar { width:260px; height:8px; background:#222; border:1px solid #444; border-radius:4px; overflow:hidden; }
+.stamina-bar .fill { height:100%; background:var(--stamina); }
+.food-slots { display:flex; gap:4px; }
+.food-slot { width:28px; height:28px; background:var(--panel); border:1px solid var(--border); border-radius:4px; font-size:10px; display:flex; align-items:center; justify-content:center; }
+/* Side panels */
+.side-panel { position:fixed; top:12px; right:12px; width:320px; max-height:80vh; overflow:auto; background:var(--panel); border:1px solid var(--border); border-radius:8px; padding:12px; pointer-events:auto; display:none; }
+.side-panel.open { display:block; }
+.side-panel h3 { margin:0 0 8px; color:var(--accent); }
+.inv-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:4px; }
+.inv-cell { aspect-ratio:1; background:#141820; border:1px solid #333; border-radius:4px; font-size:10px; display:flex; align-items:center; justify-content:center; cursor:pointer; position:relative; }
+.inv-cell.rare { border-color:#ffcc33; }
+.inv-cell.magic { border-color:#4f8fff; }
+/* Mobile HUD */
+.mob-hud { position:fixed; inset:0; pointer-events:none; }
+.mob-hud .interactive { pointer-events:auto; }
+.joystick { position:fixed; left:16px; bottom:16px; width:120px; height:120px; border-radius:50%; background:rgba(255,255,255,0.08); border:2px solid rgba(255,255,255,0.2); }
+.joystick .knob { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:48px; height:48px; border-radius:50%; background:rgba(255,255,255,0.25); }
+.action-btn { position:fixed; right:24px; bottom:24px; width:84px; height:84px; border-radius:50%; background:rgba(200,60,60,0.7); border:3px solid #fff; color:#fff; font-weight:bold; font-size:13px; }
+.skill-arc { position:fixed; right:110px; bottom:30px; display:flex; flex-direction:column; gap:8px; }
+.skill-btn { width:52px; height:52px; border-radius:50%; background:rgba(60,80,160,0.7); border:2px solid #fff; color:#fff; font-size:11px; }
+.dodge-btn { position:fixed; right:24px; bottom:118px; width:52px; height:52px; border-radius:50%; background:rgba(80,160,80,0.7); border:2px solid #fff; color:#fff; font-size:11px; }
+.top-hud { position:fixed; top:8px; left:8px; right:8px; display:flex; flex-direction:column; gap:4px; pointer-events:auto; }
+.bar { height:10px; background:#222; border-radius:5px; overflow:hidden; }
+.bar .fill { height:100%; }
+.bar.hp .fill { background:var(--hp); }
+.bar.stamina .fill { background:var(--stamina); }
+.bar.mana .fill { background:var(--mana); }
+.mini-radar { position:fixed; top:8px; right:8px; width:80px; height:80px; border-radius:50%; background:rgba(0,0,0,0.5); border:1px solid #555; }
+.drawer { position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:15; display:none; flex-direction:column; padding:12px; overflow:auto; pointer-events:auto; }
+.drawer.open { display:flex; }
+.drawer .card { background:var(--panel); border:1px solid var(--border); border-radius:8px; padding:12px; margin:6px 0; min-height:56px; }
+.btn { padding:8px 12px; background:#2a3140; color:var(--text); border:1px solid var(--border); border-radius:6px; cursor:pointer; }
+.btn:hover { border-color:var(--accent); }
+.tooltip { position:fixed; background:var(--panel); border:1px solid var(--accent); padding:8px; border-radius:6px; font-size:12px; pointer-events:none; z-index:30; max-width:260px; }
+.hidden { display:none !important; }
+.settings-toggle { position:fixed; top:8px; left:8px; z-index:25; }
