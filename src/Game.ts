@@ -548,7 +548,7 @@ export class Game {
     let best = 2.5
     for (const pr of this.props) {
       if (pr.depleted) continue
-      const d = Vector3.Distance(pr.node.position, p.position)
+      const d = Vector3.Distance(pr.position, p.position)
       if (d < best) { best = d; nearest = pr }
     }
     if (nearest) { this.doGather(nearest); return }
@@ -580,7 +580,7 @@ export class Game {
     let best: WorldProp | null = null; let bd = range
     for (const pr of this.props) {
       if (pr.depleted) continue
-      const d = Vector3.Distance(pr.node.position, pos)
+      const d = Vector3.Distance(pr.position, pos)
       if (d < bd) { bd = d; best = pr }
     }
     return best
