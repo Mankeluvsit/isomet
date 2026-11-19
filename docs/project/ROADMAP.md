@@ -4,7 +4,7 @@
 - [x] #1 Engine & Terrain (WebGPU/WebGL2, isometric camera, fog, heightmap, instanced props)
 
 ## Phase 2: Survival/Food/Gathering
-- [ ] #2 Player Archetypes & Controls
+- [x] #2 Player Archetypes & Controls
 - [ ] #3 Survival, Food & Gathering
 
 ## Phase 3: Diablo II Loot/Affixes & Elite Packs
