@@ -7,7 +7,7 @@ v0.1.0 - Mobile-First Playable Vertical Slice
 none (setup complete)
 
 ## Last Verified Build Commit SHA
-pending first push
+15141e885853a868f7878beaa9254a6cb2b8dd14
 
 ## Known Bugs
 - None tracked yet.
